@@ -114,7 +114,7 @@ And also ensure that it will notify you if there is No Data for this query over 
 ##answer
 The monitor gave me options to set up the alerting conditions. Here is the picture: <img width="1224" alt="Setting Thresholds 800 and 500" src="https://user-images.githubusercontent.com/102629064/161187964-d31f6cc2-eae2-4c26-a709-dacecff82dcf.png">
 
-b) Please configure the monitor’s message so that it will:
+b) Please configure the monitor’s message so that it will: 
 
 ---->Send you an email whenever the monitor triggers.
   Create different messages based on whether the monitor is in an Alert, Warning, or No Data state.
