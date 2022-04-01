@@ -7,7 +7,7 @@ Your answers to the questions go here.
 You can utilize any OS/host that you would like to complete this exercise. However, we recommend one of the following approaches:
 
 ##answer: 
-So I first had to read the assessment several times, like almost 6 times. I had some experience with VMWare but not Virtualbox which is also a VM offered by Orace. Since this was one of the recommended ways, and I didn't have a containerized environment like Docker, I decided to learn how to install Virtual Box, Vagrant and then set up an environment for the datadog agent. This document helped me: https://learn.hashicorp.com/collections/vagrant/getting-started
+So I first had to read the assessment several times, like almost 6 times. I had some experience with VMWare but not Virtualbox which is also a VM offered by Oracle. Since this was one of the recommended ways, and I didn't have a containerized environment like Docker, I decided to learn how to install Virtual Box, Vagrant and then set up an environment for the datadog agent. This document helped me: https://learn.hashicorp.com/collections/vagrant/getting-started
 
 The document did say that my virutal box would have 18.04 already installed. So naturally I expected Ubuntu to open when I click start on the virtual box. Yet nothing was happening. I was only seeing a black screen. <img width="739" alt="Vagrant Black Screen" src="https://user-images.githubusercontent.com/102629064/161291564-b674deef-7f68-4066-bf11-c546d7a9ab68.png">
 
@@ -226,15 +226,18 @@ As per the instructions I restarted datadog agent and re-entered the DD_SERVICE=
 
 Datadog Agent Status to show APM - <img width="479" alt="Trace Agent Datadog Status" src="https://user-images.githubusercontent.com/102629064/161194328-b5a7e282-74b1-48e9-8f68-02124ecbad2a.png">
 
-I was not able to finish step 5 of the APM which is probably why when I go to APM is just says get started. That is the command I ran from the document:export DD_ENV="Datadog" DD_SERVICE="DD_Sales_Engineer" DD_VERSION="0.38.0+" /bin/my-DD_Sales_Engineer
-  
-I also put the run time metrics directly into the my_app.py where APM is running. Still the APM on Datadog Web is not showing anything. On the python shell it shows that run time metrics are working!
-
 Python Shell Run-time Metrics: <img width="1087" alt="Python Shell Run Time Metrics" src="https://user-images.githubusercontent.com/102629064/161200057-44ad79d9-819e-4c92-904f-5ebe019eebab.png">
 <img width="924" alt="RunTime Metrics" src="https://user-images.githubusercontent.com/102629064/161198792-b1934db4-ce6b-403e-9330-4abd67cf2b33.png">
+
+Now the final few parts:
     
-I know that from the datadog.yaml file I need to add or change configurations under the APM configuration. I read: https://docs.datadoghq.com/tracing/troubleshooting/
-https://docs.datadoghq.com/tracing/troubleshooting/connection_errors/. I went to the datadog.yaml file and went to the APM Section. I enabled APM and configured the receiving port. I also added tags for env: Datadog. It just didn't work. I check the port from Datadog-agent status. The port seems to be running fine but no traces are going.<img width="363" alt="APM Status" src="https://user-images.githubusercontent.com/102629064/161323123-51418fbb-abc8-41af-ad15-fb541b2987d9.png">
+From the datadog.yaml file I need to add or change configurations under the APM configuration. I read: https://docs.datadoghq.com/tracing/troubleshooting/
+https://docs.datadoghq.com/tracing/troubleshooting/connection_errors/. I went to the datadog.yaml file and went to the APM Section. I enabled APM and configured the receiving port. I also added tags for DD_ENV: Datadog, and DD_SERVIE: DD_SALES_ENGINEER. I checkED the port from Datadog-agent status. The port seems to be running fine.<img width="363" alt="APM Status" src="https://user-images.githubusercontent.com/102629064/161323123-51418fbb-abc8-41af-ad15-fb541b2987d9.png">
+
+To send traces from the local machine to DataDog APM, I ran a curl command. curl -X PUT "http://localhost:8126/v0.3/traces" \
+with the configuration: <img width="579" alt="Curl Command" src="https://user-images.githubusercontent.com/102629064/161340514-19c9e890-dd37-496e-b533-81e8d482266e.png">
+
+Here is the result of the curl command: <img width="1116" alt="APM Curl Command Results" src="https://user-images.githubusercontent.com/102629064/161340709-0c528085-3aac-4e6a-ac58-9ae5f198f694.png">
 
 
 2) Bonus Question: What is the difference between a Service and a Resource?
@@ -248,7 +251,7 @@ https://docs.datadoghq.com/tracing/visualization/resource/
   
 ##answer: Link to Host Cloned Dashboard: https://app.datadoghq.com/dashboard/8xe-2gp-id3/jonathans-macbooklocal-cloned-showing-apm-metrics?from_ts=1648784331025&to_ts=1648787931025&live=true
   
-Screenshot of Dashboard:  <img width="1227" alt="Cloned_Dashboard_Amit" src="https://user-images.githubusercontent.com/102629064/161200129-965b1861-cc1b-48fd-8c78-a67020b7b37e.png">
+Screenshot of Dashboard:  <img width="1280" alt="APM Metrics and Infrastructure Metrics" src="https://user-images.githubusercontent.com/102629064/161337854-54201c05-3887-4fbe-8395-88ef783ca512.png">
 
 
 Please include your fully instrumented app in your submission, as well.
