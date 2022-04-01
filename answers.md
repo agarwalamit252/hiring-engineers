@@ -24,13 +24,16 @@ I found the datadog.yaml file for tags and added tags such as city and team. On 
 <img width="1272" alt="Host Tag Updated" src="https://user-images.githubusercontent.com/102629064/161177715-3f630ff2-2d91-49c3-94b0-ab71654b0425.png">
 
 
-I then added tags on the host map. <img width="1280" alt="Host Tags and Host Name" src="https://user-images.githubusercontent.com/102629064/161173261-7a3d667a-5a51-4160-b253-4f4bcf364849.png">
+I then added tags on the host map. 
+<img width="1280" alt="Host Tags and Host Name" src="https://user-images.githubusercontent.com/102629064/161173261-7a3d667a-5a51-4160-b253-4f4bcf364849.png">
 
 
 2) Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database.
 ##answers
-I installed MySQL on my device <img width="729" alt="MYSQL Full Download" src="https://user-images.githubusercontent.com/102629064/161173557-00bf8c31-2dce-429a-ac6f-7a632e767ccc.png">
-Then integrated it with the Datadog MySQL Integration https://docs.datadoghq.com/integrations/mysql/?tab=host#configuration. <img width="767" alt="MySQL Integration" src="https://user-images.githubusercontent.com/102629064/161173718-c3b8f255-bc95-4f6f-946a-43feb28b4ccd.png">
+I installed MySQL on my device 
+<img width="729" alt="MYSQL Full Download" src="https://user-images.githubusercontent.com/102629064/161173557-00bf8c31-2dce-429a-ac6f-7a632e767ccc.png">
+Then integrated it with the Datadog MySQL Integration https://docs.datadoghq.com/integrations/mysql/?tab=host#configuration. 
+<img width="767" alt="MySQL Integration" src="https://user-images.githubusercontent.com/102629064/161173718-c3b8f255-bc95-4f6f-946a-43feb28b4ccd.png">
 
 3) Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000.
 ##answers
