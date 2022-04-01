@@ -79,18 +79,18 @@ I click on the button the right of the aggregation group, then went to rollup, t
 import random
 # the following try/except block will make the custom check compatible with any Agent version
 try:
-    # first, try to import the base class from new versions of the Agent...
-    from datadog_checks.base import AgentCheck
+    # first, try to import the base class from new versions of the Agent...
+    from datadog_checks.base import AgentCheck
 except ImportError:
-    # ...if the above failed, the check is running in Agent version < 6.6.0
-    from checks import AgentCheck
+    # ...if the above failed, the check is running in Agent version < 6.6.0
+    from checks import AgentCheck
 
 # content of the special variable __version__ will be shown in the Agent status page
 __version__ = "1.0.0"
 
 class HelloCheck(AgentCheck):
-    def check(self, instance):
-        self.gauge('custom_my_metric',random.randint(0, 1000), tags=['host:jonathangolding'] + self.instance.get('tags', []))
+    def check(self, instance):
+        self.gauge('custom_my_metric',random.randint(0, 1000), tags=['host:jonathangolding'] + self.instance.get('tags', []))
 ---------
 
 4) Once this is created, access the Dashboard from your Dashboard List in the UI:
