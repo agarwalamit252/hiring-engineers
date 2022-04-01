@@ -71,9 +71,11 @@ Please be sure, when submitting your hiring challenge, to include the script tha
 
 ##answer
 I used this document for my rollup: https://docs.datadoghq.com/dashboards/querying/#rollup-to-aggregate-over-time
-I click on the button the right of the aggregation group, then went to rollup, then click on sum, and then it gave me the option to select 1 hour. It is still collecting data.<img width="373" alt="Custom_my_metric with roll up" src="https://user-images.githubusercontent.com/102629064/161184335-81fb7c55-5f9e-47d1-b18b-082bb2af17e6.png">
+I click on the button the right of the aggregation group, then went to rollup, then click on sum, and then it gave me the option to select 1 hour. It is still collecting data.
+<img width="373" alt="Custom_my_metric with roll up" src="https://user-images.githubusercontent.com/102629064/161184335-81fb7c55-5f9e-47d1-b18b-082bb2af17e6.png">
 <img width="1252" alt="Custom_my_metric the actual configuration" src="https://user-images.githubusercontent.com/102629064/161184350-59d21b5e-02b2-4ee3-93bc-05e6a6430ebd.png">
----------Script used to create My_Metric:
+
+------As stated in the question I am attaching the Script used to create custom_My_Metric:
 import random
 # the following try/except block will make the custom check compatible with any Agent version
 try:
