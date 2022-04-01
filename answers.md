@@ -71,27 +71,14 @@ Please be sure, when submitting your hiring challenge, to include the script tha
 
 ##answer
 I used this document for my rollup: https://docs.datadoghq.com/dashboards/querying/#rollup-to-aggregate-over-time
-I click on the button the right of the aggregation group, then went to rollup, then click on sum, and then it gave me the option to select 1 hour. It is still collecting data.
+I click on the button the right of the aggregation group, then went to rollup, then click on sum, and then it gave me the option to select 1 hour. It is collecting data.
 <img width="373" alt="Custom_my_metric with roll up" src="https://user-images.githubusercontent.com/102629064/161184335-81fb7c55-5f9e-47d1-b18b-082bb2af17e6.png">
 <img width="1252" alt="Custom_my_metric the actual configuration" src="https://user-images.githubusercontent.com/102629064/161184350-59d21b5e-02b2-4ee3-93bc-05e6a6430ebd.png">
 
 ------As stated in the question I am attaching the Script used to create custom_My_Metric:
-import random
-# the following try/except block will make the custom check compatible with any Agent version
-try:
-    # first, try to import the base class from new versions of the Agent...
-    from datadog_checks.base import AgentCheck
-except ImportError:
-    # ...if the above failed, the check is running in Agent version < 6.6.0
-    from checks import AgentCheck
+<img width="582" alt="Custom_My_Metric Script" src="https://user-images.githubusercontent.com/102629064/161205252-ebdbe026-663a-4e3c-9ab0-5675535a8126.png">
 
-# content of the special variable __version__ will be shown in the Agent status page
-__version__ = "1.0.0"
 
-class HelloCheck(AgentCheck):
-    def check(self, instance):
-        self.gauge('custom_my_metric',random.randint(0, 1000), tags=['host:jonathangolding'] + self.instance.get('tags', []))
----------
 
 4) Once this is created, access the Dashboard from your Dashboard List in the UI:
 
