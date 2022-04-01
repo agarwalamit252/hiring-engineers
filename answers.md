@@ -6,39 +6,51 @@ Your answers to the questions go here.
 1) Prerequisites - Setup the environment
 You can utilize any OS/host that you would like to complete this exercise. However, we recommend one of the following approaches:
 
-##answer: I first installed virtual box and then vagrant <img width="749" alt="Virtualbox with Vagrant" src="https://user-images.githubusercontent.com/102629064/161170325-0e893ac2-6b27-4073-8d05-933546fbeddc.png">
+##answer: 
+So I first had to read the assessment several times, like almost 6 times. I had some experience with VMWare but not Virtualbox which is also a VM offered by Orace. Since this was one of the recommended ways, and I didn't have a containerized environment like Docker, I decided to learn how to install Virtual Box, Vagrant and then set up an environment for the datadog agent. This document helped me: https://learn.hashicorp.com/collections/vagrant/getting-started
 
-I then realized I need to learn how to set up environments for the datadog agent to run on, so I decided to move with installing datadog on the MacOS that I was using since datadog-agent is compatible with the MacOS <img width="1280" alt="Installing Datadog Agent" src="https://user-images.githubusercontent.com/102629064/161170488-710eac1a-4b6f-4fbf-b202-6c44c37bb8ee.png">
+The document did say that my virutal box would have 18.04 already installed. So naturally I expected Ubuntu to open when I click start on the virtual box. Yet nothing was happening. I was only seeing a black screen. <img width="739" alt="Vagrant Black Screen" src="https://user-images.githubusercontent.com/102629064/161291564-b674deef-7f68-4066-bf11-c546d7a9ab68.png">
+
+
+I think Ubuntu was just pretty slow in opening so I moved to installing the Datadog Agent directly onto the MacOS that I was using since datadog-agent is compatible with the MacOS to complete the project. I went to https://www.datadoghq.com/ as advised on the assignment. It was really cool to see a colorful and modern looking website. I entered my details, signed up for a trial and on the get started page I followed the instructions to install the Datadog Agent v7. The agent page asked me to choose my OS, and I selected MAC OS. The instructions to launch the datadog agent v7 was: DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=fb3f61f89c8a8a4046ff1bd97b0e6040 DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_mac_os.sh)" from the integrations page when I signed up for the trial.
+
+I copied and pasted than in the terminal and then it installed the datadog agent on my MacOS. <img width="1280" alt="Installing Datadog Agent" src="https://user-images.githubusercontent.com/102629064/161170488-710eac1a-4b6f-4fbf-b202-6c44c37bb8ee.png">
 
 I made sure to use 'Datadog Recruiting Candidate' as Company Name <img width="954" alt="Datadog Recruiting Candidate" src="https://user-images.githubusercontent.com/102629064/161170787-1f149fc2-190e-4a90-a82c-522fd4053f11.png">
 
 Agent Reporting Metrics
 
 ##answers
-I found the metrics.yaml file to get the agent reporting metrics <img width="1280" alt="Agent Reporting Metrics Datadog" src="https://user-images.githubusercontent.com/102629064/161171172-61bff2bc-0095-47b4-9192-1c1b8f6ed9a9.png">
+I didn't necessarily know how to find the agent reporting metrics but I knew 'local machine' meant that there must be a file or folder on the local machine. So I began my manual search. It took a long time. This was really helpful as I got to understand the whole folder that datadog installs. I finally discovered the hidden 'opt' folder that had the 'datadog agent'. I opened folder by folder, and saw the conf.d folder. That had a lot of .yaml files. I knew it was inefficient to open all the folders, so I selected all folders and expanded them at the same time using 'command + a' and then 'command+shift+right arrow'. I finally found the metrics.yaml file to get the agent reporting metrics by scrolling. <img width="1280" alt="Agent Reporting Metrics Datadog" src="https://user-images.githubusercontent.com/102629064/161171172-61bff2bc-0095-47b4-9192-1c1b8f6ed9a9.png">
 
 >>>>SECTION 1: Collecting Metrics:
 
 1) Add tags in the Agent config file and show us a screenshot of your host and its tags on the Host Map page in Datadog.
 
 ##answers
+I searched google for how to assign tags datadog and this document showed up:
 Using this: https://docs.datadoghq.com/getting_started/tagging/assigning_tags/?tab=noncontainerizedenvironments
-I found the datadog.yaml file for tags and added tags such as city and team. On the second image the host tags I added show up on the host map. <img width="680" alt="Assigning Tags in Yaml" src="https://user-images.githubusercontent.com/102629064/161173087-db5e8ac4-b286-461a-99d3-f04fcc1f5514.png">
+The document asked me to navigate to the datadog.yaml file. I found the datadog.yaml file for tags, as I had done a lot searching on the conf.d folder previously already, and added tags such as city and team. I then went to the Datadog account and went through each tab on the left. One of them said 'infrastructure', and beside that was 'Host Map'. I thought that must be it! It gave me an option to click on 'agent' which is the agent I just installed. It then asked me to 'edit tags' which was straightforward. On the second image the host tags I added show up on the host map. <img width="680" alt="Assigning Tags in Yaml" src="https://user-images.githubusercontent.com/102629064/161173087-db5e8ac4-b286-461a-99d3-f04fcc1f5514.png">
 <img width="1272" alt="Host Tag Updated" src="https://user-images.githubusercontent.com/102629064/161177715-3f630ff2-2d91-49c3-94b0-ab71654b0425.png">
 
 
-I then added tags on the host map. 
+Picture for tags on the host map. 
 <img width="1280" alt="Host Tags and Host Name" src="https://user-images.githubusercontent.com/102629064/161173261-7a3d667a-5a51-4160-b253-4f4bcf364849.png">
 
 
 2) Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database.
 
 ##answers
-I installed MySQL on my device 
+It was a tough choice as I didn't know which one to install. In my work I didn't use either. I had used MySQL in the past, and because of familiarity I decided to go with MySQL. I searched youtube on how to install MySQL. Here are the two links I followed:
+https://www.youtube.com/watch?v=-BDbOOY9jsc
+https://www.youtube.com/watch?v=UcpHkYfWarM
+I installed MySQL on my device according to the instructions.
 <img width="729" alt="MYSQL Full Download" src="https://user-images.githubusercontent.com/102629064/161173557-00bf8c31-2dce-429a-ac6f-7a632e767ccc.png">
 
+After installation I had to create a profile for MySQL as explained in the video. Using mysql -u root -p I could finally launch mysql from the terminal. It then will ask you for a password, and then I was good to go!
 
-Then integrated it with the Datadog MySQL Integration https://docs.datadoghq.com/integrations/mysql/?tab=host#configuration. 
+The next part on the assignment was integrating MySQL with Datadog. So I went over to the integrations page and found the MySQL integration.
+I followed the steps from Datadog MySQL Integration https://docs.datadoghq.com/integrations/mysql/?tab=host#configuration. After preparing MySQL as per the document, you will also need to create the folder mysql.d and file conf.yaml on the conf.d folder. You can do it from the terminal itself. Locate the conf.d folder cd ~/.datadog-agent/conf.d/. Then open the new file with: nano mysql.d/conf.yaml. Then put the contents of the host configuration section in this document. I had to change the pass and port. Now as per the document, I restarted datadog agent by datadog-agent stop and then datadog-agent start. I then checked online on the Datadog account to see if there were any changes, and there was an update on the integrations pages saying I successfully installed MySQL!
 <img width="767" alt="MySQL Integration" src="https://user-images.githubusercontent.com/102629064/161173718-c3b8f255-bc95-4f6f-946a-43feb28b4ccd.png">
 
 3) Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000.
@@ -53,7 +65,8 @@ I then researched the codes for generating random variables and import random ca
 
 ##answers
 Using this document: https://docs.datadoghq.com/developers/custom_checks/write_agent_check/#updating-the-collection-interval
-I then went to the same custom_my_metric file and changed the interval to 45 sec. <img width="672" alt="My_Metric_45sec" src="https://user-images.githubusercontent.com/102629064/161176489-3fe67418-e78e-44d7-bcd1-8f46d40ac3d0.png">
+I created a file named custom_my__metric.yaml on the conf.d folder. You can do it directly from the Mac GUI, or you can do it from the terminal. I chose to do it from the Mac folder directly as clicking and navigating folders is definitely easier for me. I put the code into the folder like the document says on the interval section. I modified the interval to 45 seconds. I then create a custom_my_metric.py file. The question was how do I modify the code so that it generates random integrers. From googling I got to know that I had to import random module. Now the results section of this doc: https://docs.datadoghq.com/developers/custom_checks/write_agent_check/ really helped me modify the code. Instead of file count, I had to substitute the code for random integers. Using this document: https://docs.python.org/3/library/random.html I found the code: random.randint(). After I put the code in I restarted the agent. On the metrics section on the Datadog Account, I click on explorer and typed my file name custom_my_metric and it showed up! I was really happy this happened.
+<img width="672" alt="My_Metric_45sec" src="https://user-images.githubusercontent.com/102629064/161176489-3fe67418-e78e-44d7-bcd1-8f46d40ac3d0.png">
 <img width="373" alt="45 sec interval first picture time stamp" src="https://user-images.githubusercontent.com/102629064/161177020-28f832ed-74ab-4495-8d91-d7a14aef3e5e.png">
 <img width="373" alt="45 sec interval second picture time stamp" src="https://user-images.githubusercontent.com/102629064/161177032-1b4c40ea-544f-411f-b072-55fdd1e62125.png">
 
@@ -68,16 +81,16 @@ Utilize the Datadog API to create a Timeboard that contains:
 1) Your custom metric scoped over your host. 
 
 ##answer
-I selected both the custom_my_metric and the system_cpu_user which I believe is the host
+I first created a dashboard with the custom_my_metric. I selected both the custom_my_metric and the system_cpu_user which I believe is the host.
 <img width="1242" alt="Custom Metric over host" src="https://user-images.githubusercontent.com/102629064/161186292-5b71daa6-255c-4ed8-add9-6ca911552cbf.png">
-I tried following the document with the api client: https://docs.datadoghq.com/api/latest/dashboards/#create-a-new-dashboard and basically copied the code that was given on the document and personalized it. When I ran the code it was giving me an error.I also created a Dashboard.yaml file after creating a Dashboard.py file (the one with the api client timeseries code). Not sure I did this one right.
+The question does ask me to create a timeboard from the api client so I google datadog timeboard api client. I tried following the document with the api client: https://docs.datadoghq.com/api/latest/dashboards/#create-a-new-dashboard and basically copied the code that was given on the document and personalized it. I first installed the libaray on terminal and then imported the datadog api client on python. I save the code from the document on Dashboard.py. I rant the code, DD_SITE="datadoghq.com" DD_API_KEY="fb3f61f89c8a8a4046ff1bd97b0e6040" DD_APP_KEY="12714d38e2aceb095ca96763398f5af8913c2113" python3 "Dashboard.py" but it continously gave me an error.I also created a Dashboard.yaml file after creating a Dashboard.py file (the one with the api client timeseries code). Not sure I did this one right.
 <img width="868" alt="Timeboard Personalized Code" src="https://user-images.githubusercontent.com/102629064/161180209-630e4f51-4e99-4ab1-b809-97236e34f9ff.png">
 
 
 2) Any metric from the Integration on your Database with the anomaly function applied.
 
 ##answer
-I found this Datadog Doc: https://docs.datadoghq.com/monitors/create/types/anomaly/#anomaly-detection-algorithms and used that to overlay the anomoly over a mysql metric as MySQL was my integration with Datadog.
+I googeled and found this Datadog Doc: https://docs.datadoghq.com/monitors/create/types/anomaly/#anomaly-detection-algorithms and used that to overlay the anomoly over a mysql metric as MySQL was my integration with Datadog. I went to Monitors –> New Monitor –> Anomaly. I then selected a mysql metric. The pictures below show the result and a gray band over the evaluation review.
 <img width="1107" alt="Anomoly Monitor Part 1" src="https://user-images.githubusercontent.com/102629064/161182981-549e38b4-ba06-4d5b-a40b-6c2a7df19eed.png">
 <img width="1091" alt="Anomoly Monitor Part 2" src="https://user-images.githubusercontent.com/102629064/161182992-e850e6e2-7c3d-418b-a946-7effac3ad2e7.png">
 
@@ -87,7 +100,7 @@ Please be sure, when submitting your hiring challenge, to include the script tha
 
 ##answer
 I used this document for my rollup: https://docs.datadoghq.com/dashboards/querying/#rollup-to-aggregate-over-time
-I click on the button the right of the aggregation group, then went to rollup, then click on sum, and then it gave me the option to select 1 hour. It is collecting data.
+I click on the button the right of the aggregation group on my custom_my_metric dashboard, then went to rollup, then click on sum, and then it gave me the option to select 1 hour. It is collecting data.
 
 <img width="373" alt="Custom_my_metric with roll up" src="https://user-images.githubusercontent.com/102629064/161184335-81fb7c55-5f9e-47d1-b18b-082bb2af17e6.png">
 
@@ -101,7 +114,7 @@ I click on the button the right of the aggregation group, then went to rollup, t
 
 a)Set the Timeboard's timeframe to the past 5 minutes
 
-##answer: I changed the value from global time to past 5 min <img width="1067" alt="Timeboard 5 min" src="https://user-images.githubusercontent.com/102629064/161185124-3343b976-d994-49fb-ade0-6caa8df36326.png">
+##answer: I click on the edit button on the custom_my_metric dashboard and changed the value from global time to past 5 min <img width="1067" alt="Timeboard 5 min" src="https://user-images.githubusercontent.com/102629064/161185124-3343b976-d994-49fb-ade0-6caa8df36326.png">
 
 b) Take a snapshot of this graph and use the @ notation to send it to yourself.
 
@@ -122,7 +135,7 @@ Alerting threshold of 800
 And also ensure that it will notify you if there is No Data for this query over the past 10m.
 
 ##answer
-The monitor gave me options to set up the alerting conditions. Here is the picture: <img width="1224" alt="Setting Thresholds 800 and 500" src="https://user-images.githubusercontent.com/102629064/161187964-d31f6cc2-eae2-4c26-a709-dacecff82dcf.png">
+The keyword was monitor here. So after playing around with the dashboard, I clicked on setting and found an option named 'create monitor'. That led me right to the monitor for custom_my_metric. I then opened the monitor and clicked on the edit button under settings. The monitor gave me options to set up the alerting conditions. Here is the picture: <img width="1224" alt="Setting Thresholds 800 and 500" src="https://user-images.githubusercontent.com/102629064/161187964-d31f6cc2-eae2-4c26-a709-dacecff82dcf.png">
 
 b) Please configure the monitor’s message so that it will: 
 
@@ -131,7 +144,9 @@ Create different messages based on whether the monitor is in an Alert, Warning, 
 Include the metric value that caused the monitor to trigger and host ip when the Monitor triggers an Alert state.
 
 ##answer
-I set up alert properties with some templates and the key words of alert, warn and is_no_data. <img width="1243" alt="Alert Properties" src="https://user-images.githubusercontent.com/102629064/161188825-977f09aa-fe0a-40a0-a6e0-1c6d602d4175.png">
+I set up alert properties with some templates and the key words of alert, warn and is_no_data. I treated each segment of alert, warn and no data as an if statement. I found commands like threshold, is_nodata, warn_threshold. It took a lot of detailed additions of the code but eventually the code made sense. <img width="1243" alt="Alert Properties" src="https://user-images.githubusercontent.com/102629064/161188825-977f09aa-fe0a-40a0-a6e0-1c6d602d4175.png">
+
+At the  configuration page of the monitor it gave me an option to add my email so I would get notified.
 
 Q: When this monitor sends you an email notification, take a screenshot of the email that it sends you.
 
@@ -143,12 +158,12 @@ Bonus Question: Since this monitor is going to alert pretty often, you don’t w
 a) One that silences it from 7pm to 9am daily on M-F,
 
 ##answer
-I changed the RRule. <img width="640" alt="Downtime 7pm - 9am Custom Metric" src="https://user-images.githubusercontent.com/102629064/161189661-f8861287-823b-4c3c-a2f6-f3e5896821c9.png"> Document that helped me: https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html
+In order to do this, I saw from the dropdown on the monitor tab, an option called, 'manage downtimes'. I clicked on that and it gave me an option to schedule downtime. That is what I needed. Then I selected the custom_my_metric monitor from the dropdown, and then learned to set the conditions by changing the RRule. Document that helped me: https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html <img width="640" alt="Downtime 7pm - 9am Custom Metric" src="https://user-images.githubusercontent.com/102629064/161189661-f8861287-823b-4c3c-a2f6-f3e5896821c9.png"> 
 
 b) And one that silences it all day on Sat-Sun.
 
 ##answer
-I changed the RRule <img width="640" alt="Downtime Weekend" src="https://user-images.githubusercontent.com/102629064/161190618-54ee4127-2a21-45ed-a770-4f73ba109f2d.png">
+I created a new downtime schedule and changed the RRule just like the above <img width="640" alt="Downtime Weekend" src="https://user-images.githubusercontent.com/102629064/161190618-54ee4127-2a21-45ed-a770-4f73ba109f2d.png">
 
 ----->Make sure that your email is notified when you schedule the downtime and take a screenshot of that notification.
 
@@ -195,11 +210,11 @@ if __name__ == '__main__':
     
 1) Note: Using both ddtrace-run and manually inserting the Middleware has been known to cause issues. Please only use one or the other.
 
-##answer: I used this document to first install ddtrace: https://docs.datadoghq.com/tracing/setup_overview/setup/python/?tab=containers. https://app.datadoghq.com/apm/docs?architecture=host-based&language=python
+##answer: So I needed to understand the problem first. It was asking me to enable tracing on my_app.py which has the code given above. I used this document to first install ddtrace: https://docs.datadoghq.com/tracing/setup_overview/setup/python/?tab=containers. https://app.datadoghq.com/apm/docs?architecture=host-based&language=python
 Here are the updates: 
 Getting the dd trace code after installing dd trace: <img width="826" alt="DD Trace" src="https://user-images.githubusercontent.com/102629064/161191405-b5fce264-2498-4611-8951-ba31050f6ef2.png">
 
-In order to use flask as mentioned in the question I needed to install it first so I used pip3 intall flask: <img width="785" alt="Instaling Flask" src="https://user-images.githubusercontent.com/102629064/161193232-0df3a07e-8538-449d-ab8d-9a808b9a2fb6.png">
+In order to use flask as mentioned in the question I needed to install it first so I used pip3 install flask: <img width="785" alt="Instaling Flask" src="https://user-images.githubusercontent.com/102629064/161193232-0df3a07e-8538-449d-ab8d-9a808b9a2fb6.png">
 
 Created my_app.py python file as that was in the DD code and I put in the flask code provided in it: <img width="566" alt="Created myapp py file" src="https://user-images.githubusercontent.com/102629064/161192892-ab7b7c56-03cb-440c-bae6-d42008bb6e70.png">
 
@@ -217,6 +232,10 @@ I also put the run time metrics directly into the my_app.py where APM is running
 
 Python Shell Run-time Metrics: <img width="1087" alt="Python Shell Run Time Metrics" src="https://user-images.githubusercontent.com/102629064/161200057-44ad79d9-819e-4c92-904f-5ebe019eebab.png">
 <img width="924" alt="RunTime Metrics" src="https://user-images.githubusercontent.com/102629064/161198792-b1934db4-ce6b-403e-9330-4abd67cf2b33.png">
+    
+I know that from the datadog.yaml file I need to add or change configurations under the APM configuration. I read: https://docs.datadoghq.com/tracing/troubleshooting/
+https://docs.datadoghq.com/tracing/troubleshooting/connection_errors/. I went to the datadog.yaml file and went to the APM Section. I enabled APM and configured the receiving port. I also added tags for env: Datadog. It just didn't work. I check the port from Datadog-agent status. The port seems to be running fine but no traces are going.<img width="363" alt="APM Status" src="https://user-images.githubusercontent.com/102629064/161323123-51418fbb-abc8-41af-ad15-fb541b2987d9.png">
+
 
 2) Bonus Question: What is the difference between a Service and a Resource?
   
