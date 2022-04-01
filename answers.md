@@ -230,6 +230,11 @@ Python Shell Run-time Metrics: <img width="1087" alt="Python Shell Run Time Metr
 <img width="924" alt="RunTime Metrics" src="https://user-images.githubusercontent.com/102629064/161198792-b1934db4-ce6b-403e-9330-4abd67cf2b33.png">
 
 Now the final few parts:
+
+Here are the documents I used:
+    https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes#non-containerized-environment
+    https://docs.datadoghq.com/getting_started/tracing/
+    https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
     
 From the datadog.yaml file I need to add or change configurations under the APM configuration. I read: https://docs.datadoghq.com/tracing/troubleshooting/
 https://docs.datadoghq.com/tracing/troubleshooting/connection_errors/. I went to the datadog.yaml file and went to the APM Section. I enabled APM and configured the receiving port. I also added tags for DD_ENV: Datadog, and DD_SERVIE: DD_SALES_ENGINEER. I checkED the port from Datadog-agent status. The port seems to be running fine.<img width="363" alt="APM Status" src="https://user-images.githubusercontent.com/102629064/161323123-51418fbb-abc8-41af-ad15-fb541b2987d9.png">
@@ -238,6 +243,8 @@ To send traces from the local machine to DataDog APM, I ran a curl command. curl
 with the configuration: <img width="579" alt="Curl Command" src="https://user-images.githubusercontent.com/102629064/161340514-19c9e890-dd37-496e-b533-81e8d482266e.png">
 
 Here is the result of the curl command: <img width="1116" alt="APM Curl Command Results" src="https://user-images.githubusercontent.com/102629064/161340709-0c528085-3aac-4e6a-ac58-9ae5f198f694.png">
+    
+I know traces still need to flow into the DataDog agent and I think this will be a learning for me. I feel like I am really close but just not there.
 
 
 2) Bonus Question: What is the difference between a Service and a Resource?
