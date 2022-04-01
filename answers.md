@@ -52,8 +52,9 @@ Yes, we can make changes to the .yaml file and not change the .py file.
 >>>>Visualizing Data:
 Utilize the Datadog API to create a Timeboard that contains:
 1) Your custom metric scoped over your host. I selected both the custom_my_metric and the system_cpu_user which I believe is the host<img width="1242" alt="Custom Metric over host" src="https://user-images.githubusercontent.com/102629064/161186292-5b71daa6-255c-4ed8-add9-6ca911552cbf.png">
-I tried following the document with the api client: https://docs.datadoghq.com/api/latest/dashboards/#create-a-new-dashboard and basically copied the code that was given on the document and personalized it. When I ran the code it was giving me an error.<img width="868" alt="Timeboard Personalized Code" src="https://user-images.githubusercontent.com/102629064/161180209-630e4f51-4e99-4ab1-b809-97236e34f9ff.png">
-I also created a Dashboard.yaml file after creating a Dashboard.py file (the one with the api client timeseries code). Not sure I did this one right.
+I tried following the document with the api client: https://docs.datadoghq.com/api/latest/dashboards/#create-a-new-dashboard and basically copied the code that was given on the document and personalized it. When I ran the code it was giving me an error.I also created a Dashboard.yaml file after creating a Dashboard.py file (the one with the api client timeseries code). Not sure I did this one right.
+<img width="868" alt="Timeboard Personalized Code" src="https://user-images.githubusercontent.com/102629064/161180209-630e4f51-4e99-4ab1-b809-97236e34f9ff.png">
+
 
 2) Any metric from the Integration on your Database with the anomaly function applied.
 ##answer
