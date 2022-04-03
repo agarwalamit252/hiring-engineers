@@ -245,6 +245,21 @@ with the configuration: <img width="579" alt="Curl Command" src="https://user-im
 Here is the result of the curl command: <img width="1116" alt="APM Curl Command Results" src="https://user-images.githubusercontent.com/102629064/161340709-0c528085-3aac-4e6a-ac58-9ae5f198f694.png">
     
 I know traces still need to flow into the DataDog agent and I think this will be a learning for me. I feel like I am really close but just not there.
+    
+I have an update on this! I finally figured it out. I made it complicated with the curl command before. I simply had to use this: curl http://0.0.0.0:5050/ and follow the instructions before from: https://docs.datadoghq.com/getting_started/tracing/
+    
+Here is the updated screenshots of my coding and the result on Datadog APM.
+    1) export DD_SERVICE=my_app DD_ENV=Datadog DD_VERSION=flask DD_LOGS_INJECTION=true 
+    2) ddtrace-run python3 my_app.py
+    3) Screenshot: <img width="1230" alt="Exporting and DDTrace Run" src="https://user-images.githubusercontent.com/102629064/161442975-52f69017-9c09-41ad-b6df-99d3c892a75d.png">
+    
+    4) Then I simply had to run the curl command and start the datadog agent: curl http://0.0.0.0:5050/
+    5) datadog-agent start
+    6) screenshot:   <img width="709" alt="Curl command and starting agent" src="https://user-images.githubusercontent.com/102629064/161443042-eba9a899-9a54-4f98-abcb-472b33c2d682.png">
+    
+    Now lets look at the services page on APM: <img width="1277" alt="Services page" src="https://user-images.githubusercontent.com/102629064/161443328-8cd086f1-8e75-4c91-93c5-be87892df0c2.png">
+
+    <img width="1093" alt="Traces" src="https://user-images.githubusercontent.com/102629064/161443337-28598863-99e2-4fb1-92dd-52c1c91d1cbd.png">
 
 
 2) Bonus Question: What is the difference between a Service and a Resource?
@@ -252,13 +267,14 @@ I know traces still need to flow into the DataDog agent and I think this will be
 ##answer: A resource is a particular domain of a customer application - they are typically an instrumented web endpoint, database query, or background job.As per the document. So basically they are tools for a service. For example when we created the alerting thresholds, those are resources. Services are the building blocks of modern microservice architectures. For example an APM Webstore is a service for monitoring latency and other variables.
   
 https://docs.datadoghq.com/tracing/visualization/resource/
-  
+
+
 
 3) Provide a link and a screenshot of a Dashboard with both APM and Infrastructure Metrics.
   
 ##answer: Link to Host Cloned Dashboard: https://app.datadoghq.com/dashboard/8xe-2gp-id3/jonathans-macbooklocal-cloned-showing-apm-metrics?from_ts=1648784331025&to_ts=1648787931025&live=true
   
-Screenshot of Dashboard:  <img width="1280" alt="APM Metrics and Infrastructure Metrics" src="https://user-images.githubusercontent.com/102629064/161337854-54201c05-3887-4fbe-8395-88ef783ca512.png">
+Screenshot of Dashboard: <img width="1272" alt="Dashboard Screenshot" src="https://user-images.githubusercontent.com/102629064/161443418-a6347748-67b6-448c-8066-290429dc1510.png">
 
 
 Please include your fully instrumented app in your submission, as well.
@@ -272,6 +288,9 @@ Is there anything creative you would use Datadog for?
 ##answer
 Here is a cool idea. We all know that waste management is inefficient. At the moment through Datadog Agents we can track the inflows of traffic on a website. It would be wonderful if we could install Datadog Agents in cars that transport waste. This way we could track the inefficiencies in routes for drivers, and visualize that on the graph. Furhtermore, we could put APM's on the waster collecting machines to somehow see the exact amount of waste generated per day, week, month, year. This is still a little broad but I am sure DataDog's unified platform would tremendously help with waste mangement.
   
+
+
+
 ----------
 Ending Note:
 
