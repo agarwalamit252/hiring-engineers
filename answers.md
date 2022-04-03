@@ -251,15 +251,15 @@ I have an update on this! I finally figured it out. I made it complicated with t
 Here is the updated screenshots of my coding and the result on Datadog APM.
     1) export DD_SERVICE=my_app DD_ENV=Datadog DD_VERSION=flask DD_LOGS_INJECTION=true 
     2) ddtrace-run python3 my_app.py
-    3) Screenshot: <img width="1230" alt="Exporting and DDTrace Run" src="https://user-images.githubusercontent.com/102629064/161442975-52f69017-9c09-41ad-b6df-99d3c892a75d.png">
+Screenshot: <img width="1230" alt="Exporting and DDTrace Run" src="https://user-images.githubusercontent.com/102629064/161442975-52f69017-9c09-41ad-b6df-99d3c892a75d.png">
     
     4) Then I simply had to run the curl command and start the datadog agent: curl http://0.0.0.0:5050/
     5) datadog-agent start
-    6) screenshot:   <img width="709" alt="Curl command and starting agent" src="https://user-images.githubusercontent.com/102629064/161443042-eba9a899-9a54-4f98-abcb-472b33c2d682.png">
+screenshot:   <img width="709" alt="Curl command and starting agent" src="https://user-images.githubusercontent.com/102629064/161443042-eba9a899-9a54-4f98-abcb-472b33c2d682.png">
     
-    Now lets look at the services page on APM: <img width="1277" alt="Services page" src="https://user-images.githubusercontent.com/102629064/161443328-8cd086f1-8e75-4c91-93c5-be87892df0c2.png">
+Now lets look at the services page on APM: <img width="1277" alt="Services page" src="https://user-images.githubusercontent.com/102629064/161443328-8cd086f1-8e75-4c91-93c5-be87892df0c2.png">
 
-    <img width="1093" alt="Traces" src="https://user-images.githubusercontent.com/102629064/161443337-28598863-99e2-4fb1-92dd-52c1c91d1cbd.png">
+<img width="1093" alt="Traces" src="https://user-images.githubusercontent.com/102629064/161443337-28598863-99e2-4fb1-92dd-52c1c91d1cbd.png">
 
 
 2) Bonus Question: What is the difference between a Service and a Resource?
